@@ -9,7 +9,11 @@ import { Todo } from "./todo.interface.ts";
 export class TodoListComponent implements OnInit {
 
   myTodo: Todo[];
-  newTodo: Todo;
+  newTodo: Todo = {
+    detail: '',
+    isCompleted: false,
+    isEditing: false
+  };
 
   constructor() { }
 
@@ -31,6 +35,29 @@ export class TodoListComponent implements OnInit {
       isCompleted: false,
       isEditing: false
     }]
+  }
+
+  addTodo(): void {
+    this.myTodo.push(this.newTodo);
+    this.newTodo = {
+      detail: '',
+      isCompleted: false,
+      isEditing: false
+    };
+  }
+
+  deleteCompleted(): void {
+    this.myTodo.filter(todo => !todo.isCompleted);
+  }
+
+  checkAll(): void {
+    this.myTodo.forEach(todo => {
+      todo.isCompleted = true;
+    });
+  }
+
+  function() {
+    console.log('Write code');
   }
 
 }

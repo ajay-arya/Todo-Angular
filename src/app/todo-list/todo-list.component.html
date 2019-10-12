@@ -1,6 +1,7 @@
 <h2 class="text-center">To-Do App</h2>
 <p class="text-center">This is a simple demo of Todo, built with angular</p>
 <div class="todo-container">
+    <textarea (keyup.enter)="addTodo()" [(ngModel)]="newTodo.detail" rows="2"></textarea>
     <div class="item" *ngFor="let todo of myTodo; let i=index">
         <input type="checkbox" [(ngModel)]="todo.isCompleted">
         <span (dblclick)="todo.isEditing = true" *ngIf="!todo.isEditing">{{todo.detail}}</span>
@@ -10,5 +11,14 @@
             <span (click)="todo.isEditing = false">OK</span>
         </span>
         <span (click)="myTodo.splice(i,1)">X</span>
+    </div>
+    <div>
+        <button (click)="checkAll()">check all</button>
+        <button (click)="deleteCompleted()">Delete completed</button>
+    </div>
+    <div>
+        <button (click)="function()">All</button>
+        <button (click)="function()">Active</button>
+        <button (click)="function()">Completed</button>
     </div>
 </div>
