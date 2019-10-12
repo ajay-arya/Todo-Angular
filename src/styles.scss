@@ -1,6 +1,9 @@
 .container {
-    max-width: 600px;
+    max-width: 450px;
     margin: 0 auto;
+    background: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -8,6 +11,7 @@ body {
     font-family: Helvetica, Arial, sans-serif;
     color: #2c3e50;
     margin-top: 60px;
+    background: tomato;
 }
 
 //vardana

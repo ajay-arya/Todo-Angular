@@ -1,19 +1,28 @@
-<h2 class="text-center">To-Do App</h2>
-<p class="text-center">This is a simple demo of Todo, built with angular</p>
+<h1 class="text-center title">To-Do App</h1>
+<p class="text-center sub-title">This is a simple demo of Todo, built with angular</p>
 <div class="todo-container">
-    <textarea (keyup.enter)="addTodo()" [(ngModel)]="newTodo.detail" rows="2"></textarea>
+
+    <form class="input-detail">
+        <button (click)="addTodo()" class="add-todo">ADD</button>
+        <input name="detail" type="text" class="todo-field" (keyup.enter)="addTodo()" [(ngModel)]="newTodo.detail"
+            placeholder="Add new task" >
+    </form>
     <div class="item" *ngFor="let todo of myTodo; let i=index">
+
         <input type="checkbox" [(ngModel)]="todo.isCompleted">
-        <span (dblclick)="todo.isEditing = true" *ngIf="!todo.isEditing">{{todo.detail}}</span>
+
+        <span (dblclick)="startEditing(i)" *ngIf="!todo.isEditing">{{todo.detail}}</span>
+
         <span *ngIf="todo.isEditing">
-            <input type="text" autofocus (blur)="todo.isEditing=false" (keyup.enter)="todo.isEditing=false"
+            <input type="text" autofocus (blur)="stopEditing(i)" (keyup.enter)="stopEditing(i)"
                 [(ngModel)]="todo.detail">
-            <span (click)="todo.isEditing = false">OK</span>
+            <span (click)="stopEditing">OK</span>
         </span>
-        <span (click)="myTodo.splice(i,1)">X</span>
+
+        <span (click)="deleteTodo(i)">x</span>
     </div>
     <div>
-        <button (click)="checkAll()">check all</button>
+        <button (click)="checkAll()">Check all</button>
         <button (click)="deleteCompleted()">Delete completed</button>
     </div>
     <div>

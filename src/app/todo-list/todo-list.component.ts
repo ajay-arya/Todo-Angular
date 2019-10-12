@@ -19,15 +19,15 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.myTodo = [{
-      detail: 'Step 1: Be born',
+      detail: 'Add new task in textarea',
       isCompleted: false,
       isEditing: false
     }, {
-      detail: 'Step 2: Learn to code',
+      detail: 'Double click on Task to start editing',
       isCompleted: true,
       isEditing: false
     }, {
-      detail: 'Step 3: Write Awesome code no matter how trivial it is',
+      detail: 'Checkbox shows task status [Pending | Complete]',
       isCompleted: false,
       isEditing: false
     }, {
@@ -38,19 +38,21 @@ export class TodoListComponent implements OnInit {
   }
 
   addTodo(): void {
-    this.myTodo.push(this.newTodo);
-    this.newTodo = {
-      detail: '',
-      isCompleted: false,
-      isEditing: false
-    };
+    if (this.newTodo.detail.length !== 0) {
+      this.myTodo.push(this.newTodo);
+      this.newTodo = {
+        detail: '',
+        isCompleted: false,
+        isEditing: false
+      };
+    }
   }
 
-  deleteCompleted(): void {
+  deleteCompleted() {
     this.myTodo.filter(todo => !todo.isCompleted);
   }
 
-  checkAll(): void {
+  checkAll() {
     this.myTodo.forEach(todo => {
       todo.isCompleted = true;
     });
@@ -58,6 +60,18 @@ export class TodoListComponent implements OnInit {
 
   function() {
     console.log('Write code');
+  }
+
+  startEditing(i) {
+    this.myTodo[i].isEditing = true;
+  }
+
+  stopEditing(i) {
+    this.myTodo[i].isEditing = false;
+  }
+
+  deleteTodo(i) {
+    this.myTodo.splice(i, 1);
   }
 
 }
