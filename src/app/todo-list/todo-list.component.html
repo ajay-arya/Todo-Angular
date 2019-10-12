@@ -5,29 +5,38 @@
     <form class="input-detail">
         <button (click)="addTodo()" class="add-todo">ADD</button>
         <input name="detail" type="text" class="todo-field" (keyup.enter)="addTodo()" [(ngModel)]="newTodo.detail"
-            placeholder="Add new task" >
+            placeholder="Add new task">
     </form>
+
     <div class="item" *ngFor="let todo of myTodo; let i=index">
 
-        <input type="checkbox" [(ngModel)]="todo.isCompleted">
+        <div class="row-wrapper" *ngIf="todo.isCompleted">
+            <input class="todo-checkbox" type="checkbox" checked disabled>
 
-        <span (dblclick)="startEditing(i)" *ngIf="!todo.isEditing">{{todo.detail}}</span>
+            <span class="todo-detail completed">{{todo.detail}}</span>
 
-        <span *ngIf="todo.isEditing">
-            <input type="text" autofocus (blur)="stopEditing(i)" (keyup.enter)="stopEditing(i)"
-                [(ngModel)]="todo.detail">
-            <span (click)="stopEditing">OK</span>
-        </span>
+            <span class="todo-closeBtn" (click)="deleteTodo(i)">x</span>
+        </div>
 
-        <span (click)="deleteTodo(i)">x</span>
+        <div class="row-wrapper" *ngIf="!todo.isCompleted">
+            <input class="todo-checkbox" type="checkbox" [(ngModel)]="todo.isCompleted">
+
+            <span class="todo-detail" *ngIf="!todo.isEditing" (dblclick)="startEditing(i)">{{todo.detail}}</span>
+
+            <span *ngIf="todo.isEditing">
+                <input class="todo-detail-edit" type="text" autofocus (blur)="stopEditing(i)"
+                    (keyup.enter)="stopEditing(i)" [(ngModel)]="todo.detail">
+                <span class="todo-closeBtn" (click)="stopEditing">ok</span>
+            </span>
+
+            <span *ngIf="!todo.isEditing" class="todo-closeBtn" (click)="deleteTodo(i)">x</span>
+        </div>
     </div>
+    <hr>
+
     <div>
         <button (click)="checkAll()">Check all</button>
         <button (click)="deleteCompleted()">Delete completed</button>
-    </div>
-    <div>
-        <button (click)="function()">All</button>
-        <button (click)="function()">Active</button>
-        <button (click)="function()">Completed</button>
-    </div>
+    </div><br>
+
 </div>

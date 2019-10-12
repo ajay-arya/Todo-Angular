@@ -14,6 +14,7 @@ export class TodoListComponent implements OnInit {
     isCompleted: false,
     isEditing: false
   };
+  previousEdit = -1;
 
   constructor() { }
 
@@ -58,12 +59,16 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  function() {
-    console.log('Write code');
-  }
-
   startEditing(i) {
     this.myTodo[i].isEditing = true;
+    // if (this.previousEdit === -1) {
+    //   this.previousEdit = i;
+    //   this.myTodo[i].isEditing = true;
+    // } else {
+    //   this.myTodo[this.previousEdit].isEditing = false;
+    //   this.previousEdit = i;
+    //   this.myTodo[i].isEditing = true;
+    // }
   }
 
   stopEditing(i) {
