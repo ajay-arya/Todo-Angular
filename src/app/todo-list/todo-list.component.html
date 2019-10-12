@@ -1,0 +1,14 @@
+<h2 class="text-center">To-Do App</h2>
+<p class="text-center">This is a simple demo of Todo, built with angular</p>
+<div class="todo-container">
+    <div class="item" *ngFor="let todo of myTodo; let i=index">
+        <input type="checkbox" [(ngModel)]="todo.isCompleted">
+        <span (dblclick)="todo.isEditing = true" *ngIf="!todo.isEditing">{{todo.detail}}</span>
+        <span *ngIf="todo.isEditing">
+            <input type="text" autofocus (blur)="todo.isEditing=false" (keyup.enter)="todo.isEditing=false"
+                [(ngModel)]="todo.detail">
+            <span (click)="todo.isEditing = false">OK</span>
+        </span>
+        <span (click)="myTodo.splice(i,1)">X</span>
+    </div>
+</div>
