@@ -1,5 +1,11 @@
 {
-  "name": "todo-angular",
+  "name": "todo-angular/Free Template/",
+  "author": {
+    "name": "Ajay Kumar B C",
+    "url": "https://scriptoleaf.com",
+    "github": "https://github.com/ajay-arya",
+    "linked.in": "https://https://www.linkedin.com/in/ajay-kumar-bc/"
+  },
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
