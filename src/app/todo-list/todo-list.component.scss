@@ -23,7 +23,7 @@
     border-left: 1px solid white;
     float: right;
     cursor: pointer;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.7) 50%, #d7d7d7 50%);
+    background: linear-gradient(to right, rgb(255, 255, 255) 50%, #d7d7d7 50%);
     background-size: 200% 100%;
     background-position: right bottom;
     font-weight: 300;
@@ -95,4 +95,19 @@
 
 .todo-closeBtn:hover {
   color: red;
+}
+
+.action-btn {
+  position: relative;
+  padding: 5px 10px;
+  margin-right: 10px;
+  background: tomato;
+  font-size: 0.7rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.action-btn:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }

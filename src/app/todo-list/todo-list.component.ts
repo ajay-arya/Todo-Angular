@@ -20,19 +20,23 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.myTodo = [{
-      detail: 'Add new task in textarea',
+      detail: 'Add new task in textarea.',
       isCompleted: false,
       isEditing: false
     }, {
-      detail: 'Double click on Task to start editing',
-      isCompleted: true,
-      isEditing: false
-    }, {
-      detail: 'Checkbox shows task status [Pending | Complete]',
+      detail: 'Double click on Task to start editing.',
       isCompleted: false,
       isEditing: false
     }, {
-      detail: `Step 4: Enjoy and Die '-_-'`,
+      detail: 'Checkbox shows task status [Pending | Complete].',
+      isCompleted: false,
+      isEditing: false
+    }, {
+      detail: `Click 'x' to delete task.`,
+      isCompleted: false,
+      isEditing: false
+    }, {
+      detail: `Completed task can't be edited.`,
       isCompleted: false,
       isEditing: false
     }]
@@ -50,7 +54,7 @@ export class TodoListComponent implements OnInit {
   }
 
   deleteCompleted() {
-    this.myTodo.filter(todo => !todo.isCompleted);
+    this.myTodo = this.myTodo.filter(todo => !todo.isCompleted);
   }
 
   checkAll() {
